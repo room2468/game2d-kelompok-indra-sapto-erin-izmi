@@ -70,6 +70,7 @@ public class WaitingRoom extends JFrame {
         setVisible(true);
 
         startButton.addActionListener(e -> {
+            showLoadingAndInput(0, 1);
             GameMessage startMsg = new GameMessage("start", null, -1, -1);
             writer.println(gson.toJson(startMsg));
         });
@@ -162,6 +163,7 @@ public class WaitingRoom extends JFrame {
                 } else {
                     countdownTimer.stop();
                     loading.dispose();
+                    new TextInputScreen(writer, playerId, totalPlayers, playerName, maxStep, currentStep);
 
                 }
             }
