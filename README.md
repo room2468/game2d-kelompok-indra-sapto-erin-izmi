@@ -71,7 +71,7 @@ Game ini dibuat oleh: **Indra**, **Sapto**, **Erin**, **Izmi**.
 - Sapto : Login and Waiting Room
 - Erin  : Text and Drawing Screen
 - Izmi  : Guest and Replay Panel
-- Indra : Logic Game adn Server Sinkron
+- Indra : Logic Game and Server Sinkron
 
 ## ❤️ Lisensi
 
