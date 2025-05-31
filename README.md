@@ -69,7 +69,7 @@ Game ini dibuat oleh: **Indra**, **Sapto**, **Erin**, **Izmi**.
 ---
 ## 👨‍💻 Pembagian Tugas
 - Sapto : Login and Waiting Room
-- Erin  : Text and Drawing
+- Erin  : Text and Drawing Screen
 - Izmi  : Guest and Replay Panel
 - Indra : Logic Game adn Server Sinkron
 
