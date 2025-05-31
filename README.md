@@ -67,11 +67,14 @@ Game ini dibuat oleh: **Indra**, **Sapto**, **Erin**, **Izmi**.
 - 👤 Izmi Ukhti (2231740046)
 
 ---
+
 ## 👨‍💻 Pembagian Tugas
 - Sapto : Login and Waiting Room
 - Erin  : Text and Drawing Screen
 - Izmi  : Guest and Replay Panel
 - Indra : Logic Game and Server Sinkron
+
+---
 
 ## ❤️ Lisensi
 
