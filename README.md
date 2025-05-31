@@ -63,7 +63,7 @@ Game ini dibuat oleh: **Indra**, **Sapto**, **Erin**, **Izmi**.
 
 - 👤 Erinthia Dinda (2231740005)
 - 👤 Fajar Sapto (2231740018)
-- 👤 Indra Fajar (223174006)
+- 👤 Indra Fajar (2231740006)
 - 👤 Izmi Ukhti (2231740046)
 
 ---
