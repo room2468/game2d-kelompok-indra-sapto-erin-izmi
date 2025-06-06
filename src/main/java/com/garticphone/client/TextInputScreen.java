@@ -108,10 +108,6 @@ public class TextInputScreen extends JFrame {
 
         submittedLabel.setText("Submitted. Waiting for others...");
 
-        SwingUtilities.invokeLater(() -> {
-            dispose(); // Tutup window input
-            new SentencePromptScreen(writer, sentence, playerName, totalPlayers, maxStep, currentStep);
-        });
     }
 
     public static void resetOpenedFlag() {

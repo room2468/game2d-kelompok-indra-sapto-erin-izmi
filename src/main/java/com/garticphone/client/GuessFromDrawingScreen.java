@@ -155,22 +155,6 @@ public class GuessFromDrawingScreen extends JFrame {
         timerLabel.setText("Submitted!");
         submittedLabel.setText("Submitted. Waiting for others...");
 
-        // --- Tambahkan kode ini untuk langsung ke ReplayScreen (dummy data) ---
-        SwingUtilities.invokeLater(() -> {
-            dispose();
-            // Dummy data untuk demo
-            java.util.List<java.util.List<String>> chains = new java.util.ArrayList<>();
-            java.util.List<String> chain = new java.util.ArrayList<>();
-            chain.add("Kalimat awal");
-            chain.add("...base64 image...");
-            chain.add("Tebakan");
-            chains.add(chain);
-
-            java.util.List<com.garticphone.shared.PlayerData> players = new java.util.ArrayList<>();
-            players.add(new com.garticphone.shared.PlayerData(playerName, playerId, false));
-
-            new ReplayScreen(chains, players);
-        });
     }
 
     private void startTimer() {

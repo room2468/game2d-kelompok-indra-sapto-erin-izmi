@@ -338,11 +338,6 @@ public class SentencePromptScreen extends JFrame {
 
         submittedLabel.setText("Submitted. Waiting for others...");
 
-        SwingUtilities.invokeLater(() -> {
-            dispose();
-
-            new GuessFromDrawingScreen(writer, -1, totalPlayers, "Player", base64Image, maxStep, currentStep);
-        });
     }
 
     private void setToolsEnabled(boolean enabled) {

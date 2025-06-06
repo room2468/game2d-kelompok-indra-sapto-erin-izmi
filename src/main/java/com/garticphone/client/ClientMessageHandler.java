@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.swing.SwingUtilities;
 
 import com.garticphone.shared.GameMessage;
+import com.garticphone.shared.ReplayPayload;
 import com.google.gson.Gson;
 
 public class ClientMessageHandler implements Runnable {
@@ -14,9 +15,10 @@ public class ClientMessageHandler implements Runnable {
     private final int playerId;
     private final String playerName;
     private final int totalPlayers;
-    private final Gson gson = new Gson();
     private int maxStep = 0;
     private int currentStep = 0;
+
+    private final Gson gson = new Gson();
 
     public ClientMessageHandler(BufferedReader reader, PrintWriter writer, int playerId, String playerName,
             int totalPlayers) {
@@ -41,7 +43,8 @@ public class ClientMessageHandler implements Runnable {
                         int submitted = Integer.parseInt(parts[0]);
                         int total = Integer.parseInt(parts[1]);
                         TextInputScreen.broadcastSubmittedCount(submitted, total);
-
+                        SentencePromptScreen.broadcastSubmittedCount(submitted, total);
+                        GuessFromDrawingScreen.broadcastSubmittedCount(submitted, total);
                         break;
                     }
                     case "sentence_next": {
@@ -49,22 +52,44 @@ public class ClientMessageHandler implements Runnable {
                         String sentence = payloadObj.get("data").getAsString();
                         int currentStep = payloadObj.get("currentStep").getAsInt();
                         int maxStep = payloadObj.get("maxStep").getAsInt();
-                        SwingUtilities.invokeLater(new Runnable() {
-                            public void run() {
-                                TextInputScreen.closeAll();
-
-                            }
+                        SwingUtilities.invokeLater(() -> {
+                            TextInputScreen.closeAll();
+                            SentencePromptScreen.closeAll();
+                            GuessFromDrawingScreen.closeAll();
+                            new SentencePromptScreen(writer, sentence, playerName, totalPlayers, maxStep, currentStep);
                         });
                         break;
                     }
                     case "drawing_next": {
-
+                        com.google.gson.JsonObject payloadObj = gson.toJsonTree(msg.payload).getAsJsonObject();
+                        int currentStep = payloadObj.get("currentStep").getAsInt();
+                        int maxStep = payloadObj.get("maxStep").getAsInt();
+                        String base64Image = payloadObj.get("data").getAsString();
+                        System.out.println("[CLIENT] drawing_next payload: " + (base64Image == null ? "null"
+                                : base64Image.substring(0, Math.min(50, base64Image.length()))));
+                        SwingUtilities.invokeLater(() -> {
+                            TextInputScreen.closeAll();
+                            SentencePromptScreen.closeAll();
+                            GuessFromDrawingScreen.closeAll();
+                            System.out.println("[CLIENT] Opening GuessFromDrawingScreen...");
+                            new GuessFromDrawingScreen(writer, playerId, totalPlayers, playerName, base64Image, maxStep,
+                                    currentStep);
+                        });
                         break;
                     }
+
                     case "replay_data": {
-
+                        SwingUtilities.invokeLater(() -> {
+                            ReplayScreen.closeAll();
+                            TextInputScreen.closeAll();
+                            SentencePromptScreen.closeAll();
+                            GuessFromDrawingScreen.closeAll();
+                            ReplayPayload payload = gson.fromJson(gson.toJson(msg.payload), ReplayPayload.class);
+                            new ReplayScreen(payload.chains, payload.players);
+                        });
                         break;
                     }
+
                     case "start": {
                         int currentStep = 0, maxStep = 1;
                         if (msg.payload != null) {
@@ -74,15 +99,12 @@ public class ClientMessageHandler implements Runnable {
                             if (obj.has("maxStep"))
                                 maxStep = obj.get("maxStep").getAsInt();
                         }
-                        final int finalCurrentStep = currentStep;
-                        final int finalMaxStep = maxStep;
-                        SwingUtilities.invokeLater(new Runnable() {
-                            public void run() {
-                                TextInputScreen.closeAll();
-                                // SentencePromptScreen.closeAll();
-                                new TextInputScreen(writer, playerId, totalPlayers, playerName, finalMaxStep,
-                                        finalCurrentStep);
-                            }
+                        int finalCurrentStep = currentStep;
+                        int finalMaxStep = maxStep;
+                        SwingUtilities.invokeLater(() -> {
+                            TextInputScreen.closeAll();
+                            SentencePromptScreen.closeAll();
+
                         });
                         break;
                     }
@@ -98,14 +120,14 @@ public class ClientMessageHandler implements Runnable {
 
                         this.currentStep = step;
                         this.maxStep = max;
-
+                        SentencePromptScreen.broadcastStepUpdate(step, max);
                         break;
                     }
+
                 }
             }
         } catch (Exception e) {
             System.out.println("[CLIENT] Disconnected or error: " + e.getMessage());
         }
     }
-
 }
