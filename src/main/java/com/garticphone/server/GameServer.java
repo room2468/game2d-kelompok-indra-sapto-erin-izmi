@@ -7,8 +7,11 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.garticphone.shared.GameMessage;
 import com.garticphone.shared.PlayerData;
 import com.google.gson.Gson;
 
@@ -16,6 +19,7 @@ public class GameServer {
     private static final int MAX_PLAYERS = 8;
     private static final List<PlayerData> players = new ArrayList<>();
     private static final List<PrintWriter> writers = new ArrayList<>();
+    private static GameRoundManager roundManager = null;
     private static final Gson gson = new Gson();
 
     public static void start(int port) {
@@ -51,6 +55,18 @@ public class GameServer {
         }
     }
 
+    private static void broadcast(GameMessage msg) {
+        String json = gson.toJson(msg);
+        for (PrintWriter out : writers) {
+            out.println(json);
+            out.flush();
+        }
+    }
+
+    public static List<PlayerData> getPlayers() {
+        return players;
+    }
+
     private static class ClientHandler implements Runnable {
         private final BufferedReader in;
         private final int playerId;
@@ -62,7 +78,41 @@ public class GameServer {
 
         @Override
         public void run() {
-            throw new UnsupportedOperationException("Not supported yet.");
+            try {
+                String line;
+                while ((line = in.readLine()) != null) {
+                    GameMessage msg = gson.fromJson(line, GameMessage.class);
+                    switch (msg.type) {
+                        case "start":
+                            System.out.println("[SERVER] Host started the game.");
+                            roundManager = new GameRoundManager(players.size(), writers);
+                            int curStep = roundManager.getCurrentStep();
+                            int maxStep = roundManager.getMaxStep();
+                            Map<String, Integer> payload = new HashMap<>();
+                            payload.put("currentStep", curStep);
+                            payload.put("maxStep", maxStep);
+                            broadcast(new GameMessage("start", payload, -1, -1));
+                            break;
+                        case "sentence":
+                            if (roundManager != null) {
+                                roundManager.submit(playerId, (String) msg.payload);
+
+                            }
+                            break;
+                        case "drawing":
+                            if (roundManager != null) {
+                                roundManager.submit(playerId, (String) msg.payload);
+
+                            }
+                            break;
+                        default:
+                            System.out.println("[SERVER] Unknown message type: " + msg.type);
+                            break;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("[SERVER] Client " + playerId + " disconnected: " + e.getMessage());
+            }
         }
     }
 }
