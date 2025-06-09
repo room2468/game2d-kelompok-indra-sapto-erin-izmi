@@ -47,7 +47,7 @@ public class GuessFromDrawingScreen extends JFrame {
     public GuessFromDrawingScreen(PrintWriter writer, int playerId, int totalPlayers, String playerName,
             String base64Image, int maxStep, int currentStep) {
         this.maxStep = maxStep;
-        this.currentStep = currentStep;
+        this.currentStep = currentStep + 1;
         this.writer = writer;
         this.playerId = playerId;
         this.totalPlayers = totalPlayers;

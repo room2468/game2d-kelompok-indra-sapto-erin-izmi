@@ -47,7 +47,7 @@ public class TextInputScreen extends JFrame {
         this.playerName = playerName;
         this.totalPlayers = totalPlayers;
         this.maxStep = maxStep;
-        this.currentStep = currentStep;
+        this.currentStep = currentStep + 1;
         instances.add(this);
 
         initUI();

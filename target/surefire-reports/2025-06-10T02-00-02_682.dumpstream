@@ -1,4 +1,4 @@
-# Created at 2025-06-09T21:18:41.468
+# Created at 2025-06-10T02:00:03.391
 Boot Manifest-JAR contains absolute paths in classpath 'D:\My Data\Kuliah\Semester 6\Pemrograman Jaringan\garticphone\New folder\gartic\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root
