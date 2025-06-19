@@ -52,11 +52,15 @@ public class ClientMessageHandler implements Runnable {
                         String sentence = payloadObj.get("data").getAsString();
                         int currentStep = payloadObj.get("currentStep").getAsInt();
                         int maxStep = payloadObj.get("maxStep").getAsInt();
+
+                        this.currentStep = currentStep;
+                        this.maxStep = maxStep;
                         SwingUtilities.invokeLater(() -> {
                             TextInputScreen.closeAll();
                             SentencePromptScreen.closeAll();
                             GuessFromDrawingScreen.closeAll();
-                            new SentencePromptScreen(writer, sentence, playerName, totalPlayers, maxStep, currentStep);
+                            new SentencePromptScreen(writer, sentence, playerName, totalPlayers, this.maxStep,
+                                    this.currentStep);
                         });
                         break;
                     }
@@ -65,15 +69,15 @@ public class ClientMessageHandler implements Runnable {
                         int currentStep = payloadObj.get("currentStep").getAsInt();
                         int maxStep = payloadObj.get("maxStep").getAsInt();
                         String base64Image = payloadObj.get("data").getAsString();
-                        System.out.println("[CLIENT] drawing_next payload: " + (base64Image == null ? "null"
-                                : base64Image.substring(0, Math.min(50, base64Image.length()))));
+
+                        this.currentStep = currentStep;
+                        this.maxStep = maxStep;
                         SwingUtilities.invokeLater(() -> {
                             TextInputScreen.closeAll();
                             SentencePromptScreen.closeAll();
                             GuessFromDrawingScreen.closeAll();
-                            System.out.println("[CLIENT] Opening GuessFromDrawingScreen...");
-                            new GuessFromDrawingScreen(writer, playerId, totalPlayers, playerName, base64Image, maxStep,
-                                    currentStep);
+                            new GuessFromDrawingScreen(writer, playerId, totalPlayers, playerName, base64Image,
+                                    this.maxStep, this.currentStep);
                         });
                         break;
                     }
@@ -99,12 +103,17 @@ public class ClientMessageHandler implements Runnable {
                             if (obj.has("maxStep"))
                                 maxStep = obj.get("maxStep").getAsInt();
                         }
-                        int finalCurrentStep = currentStep;
-                        int finalMaxStep = maxStep;
+
+                        this.currentStep = currentStep;
+                        this.maxStep = maxStep;
+                        int finalCurrentStep = this.currentStep;
+                        int finalMaxStep = this.maxStep;
                         SwingUtilities.invokeLater(() -> {
                             TextInputScreen.closeAll();
                             SentencePromptScreen.closeAll();
-
+                            GuessFromDrawingScreen.closeAll();
+                            new TextInputScreen(writer, playerId, totalPlayers, playerName, finalMaxStep,
+                                    finalCurrentStep);
                         });
                         break;
                     }

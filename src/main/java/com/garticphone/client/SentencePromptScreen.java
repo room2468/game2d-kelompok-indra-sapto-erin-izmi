@@ -66,8 +66,8 @@ public class SentencePromptScreen extends JFrame {
             int currentStep) {
         this.totalPlayers = totalPlayers;
         this.writer = writer;
-        this.maxStep = maxStep;
-        this.currentStep = currentStep + 1;
+        this.maxStep = maxStep + 1;
+        this.currentStep = currentStep;
         setTitle(playerName + " Draw This Sentence" + "(" + currentStep + "/" + maxStep + ")");
         instances.add(this);
         setSize(800, 600);
@@ -401,7 +401,7 @@ public class SentencePromptScreen extends JFrame {
     public void updateStepLabel(int currentStep, int maxStep) {
         this.currentStep = currentStep;
         this.maxStep = maxStep;
-
+        setTitle("Draw This Sentence (" + currentStep + "/" + maxStep + ")");
     }
 
     public static void broadcastStepUpdate(int currentStep, int maxStep) {

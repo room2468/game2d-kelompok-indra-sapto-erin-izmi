@@ -107,16 +107,16 @@ Open Source – Feel free to use, modify, and share!
 
 8. Setelah permainan selesai, setiap pemain dapat melihat game replay dari pemain lainnya
    - Game Replay Sapto
-   ![ReplaySapto](./asset/game%20replay%20sapto.jpg)
-
+     ![ReplaySapto](./asset/game%20replay%20sapto.jpg)
+     
    - Game Replay Izmi
-   ![ReplayIzmi](./asset/game%20replay%20izmi.jpg)
+     ![ReplayIzmi](./asset/game%20replay%20izmi.jpg)
 
    - Game Replay Indra
-   ![ReplayIndra](./asset/game%20replay%20indra.jpg)
+     ![ReplayIndra](./asset/game%20replay%20indra.jpg)
 
    - Game Replay Erin
-   ![ReplayErin](./asset/game%20replay%20erin.jpg)
+     ![ReplayErin](./asset/game%20replay%20erin.jpg)
 
 9. Pemain dapat mengunduh Game Replay dalam bentuk PNG
    ![ExportPNG](./asset/export%20png.jpg)

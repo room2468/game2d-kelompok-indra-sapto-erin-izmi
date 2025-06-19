@@ -96,15 +96,13 @@ public class GameServer {
                         case "sentence":
                             if (roundManager != null) {
                                 roundManager.submit(playerId, (String) msg.payload);
-                                Map<String, Integer> payloadNew = roundManager.getStepInfo();
-                                broadcast(new GameMessage("step_update", payloadNew, -1, -1));
+
                             }
                             break;
                         case "drawing":
                             if (roundManager != null) {
                                 roundManager.submit(playerId, (String) msg.payload);
-                                Map<String, Integer> payloadNew = roundManager.getStepInfo();
-                                broadcast(new GameMessage("step_update", payloadNew, -1, -1));
+
                             }
                             break;
                         default:

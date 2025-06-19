@@ -53,6 +53,12 @@ public class GameRoundManager {
         if (currentStep < maxStep - 1) {
             currentStep++;
             sendPromptToNextPlayer();
+            Map<String, Integer> payloadNew = getStepInfo();
+            GameMessage stepUpdateMsg = new GameMessage("step_update", payloadNew, -1, -1);
+            for (PrintWriter out : writers) {
+                out.println(gson.toJson(stepUpdateMsg));
+                out.flush();
+            }
         } else {
             sendReplayToAll();
         }
