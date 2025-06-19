@@ -85,41 +85,54 @@ Open Source – Feel free to use, modify, and share!
 ### 📸 Screenshot
 
 1. Kamu bisa memilih untuk jadi Host (pembuat game) atau Player (ikut main bareng)
+
    ![Lobby](./asset/lobby.jpg)
 
 2. Pemain melakukan login dengan manginputkan IP yang diberikan oleh host
+
    ![Login](./asset/login%20page.jpg)
 
 3. Setelah login semua pemain akan menunggu di waiting room
+
    ![Room](./asset/waiting%20room.jpg)
 
 4. Awal permainan pemain menginputkan suatu kalimat random
+
    ![Text](./asset/input%20text.jpg)
 
 5. Pemain menggambar objek sesuai dengan kalimat yang didapat
+
    ![Draw](./asset/draw%20the%20sentence.jpg)
 
 6. Pemain menebak kalimat dari gambar yang didapat
+
    ![Guess Word](./asset/guess%20the%20drawing.jpg)
 
 7. Pemain menggambar objek sesuai dengan kalimat yang didapat
+
    ![Draw2](./asset/draw%20the%20sentence2.jpg)
 
 8. Setelah permainan selesai, setiap pemain dapat melihat game replay dari pemain lainnya
    - Game Replay Sapto
+
      ![ReplaySapto](./asset/game%20replay%20sapto.jpg)
-     
+
    - Game Replay Izmi
+
      ![ReplayIzmi](./asset/game%20replay%20izmi.jpg)
 
    - Game Replay Indra
+
      ![ReplayIndra](./asset/game%20replay%20indra.jpg)
 
    - Game Replay Erin
+
      ![ReplayErin](./asset/game%20replay%20erin.jpg)
 
 9. Pemain dapat mengunduh Game Replay dalam bentuk PNG
+
    ![ExportPNG](./asset/export%20png.jpg)
+
    ![ExportPNG2](./asset/export%20png2.jpg)
 
 ---
