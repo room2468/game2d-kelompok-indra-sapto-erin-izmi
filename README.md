@@ -139,8 +139,9 @@ Open Source – Feel free to use, modify, and share!
 
 ### 🔎 Sumber
 
-Sumber bbisa diakses di link berikut👇
-https://youtu.be/YMvEwpo0_iM
+Sumber bisa diakses di link berikut👇
+[![Video GamePlay](https://img.youtube.com/vi/YMvEwpo0_iM/0.jpg)](https://youtu.be/YMvEwpo0_iM)
+
 
 ---
 
