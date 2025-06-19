@@ -84,7 +84,7 @@ Open Source – Feel free to use, modify, and share!
 
 ### 📸 Screenshot
 
-1. Kamu bisa memilih untuk jadi Host (pembuat game) atau Player (ikut main bareng).
+1. Kamu bisa memilih untuk jadi Host (pembuat game) atau Player (ikut main bareng)
    ![Lobby](./asset/lobby.jpg)
 
 2. Pemain melakukan login dengan manginputkan IP yang diberikan oleh host
@@ -121,6 +121,13 @@ Open Source – Feel free to use, modify, and share!
 9. Pemain dapat mengunduh Game Replay dalam bentuk PNG
    ![ExportPNG](./asset/export%20png.jpg)
    ![ExportPNG2](./asset/export%20png2.jpg)
+
+---
+
+### 🔎 Sumber
+
+Sumber bbisa diakses di link berikut👇
+https://youtu.be/YMvEwpo0_iM
 
 ---
 
